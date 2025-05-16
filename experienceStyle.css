@@ -1,0 +1,119 @@
+/*
+    Program   : experienceStyle.css
+    Programmer: Sara Katsabas
+    Date      : November 29, 2024
+    Purpose   : To provide external style settings for the Portfolio 
+                Education/Work Experience page.
+*/
+
+/* Aligning everything on the page to center + font */
+* {
+    font-family: Garamond;
+    text-align: center;
+}
+
+/* General item styling */
+body {
+    background-color: rgb(222, 217, 215);
+    border: solid 3px rgb(181, 177, 175);
+}
+
+h1 {
+    font-size: 42px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 32px;
+    text-align: center;
+    color: rgb(95, 91, 89);
+}
+
+h4 {
+    text-align: left;
+    font-size: 24px;
+    color: rgb(95, 91, 89)
+}
+
+p {
+    text-align: left;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+li {
+    font-family: Helvetica;
+    text-align: left;
+    font-size: 18px;
+}
+
+/* List styling */
+li:hover {
+    color: rgb(176, 6, 40);
+}
+
+/* individual <div> styling */
+#TMU {
+    border: dotted 2px rgb(95, 91, 89);
+    padding: 2%;
+    background-color: rgb(241, 233, 230);
+    margin: auto;
+    width: 50%;
+}
+
+#COGS {
+    border: dotted 2px rgb(95, 91, 89);
+    padding: 2%;
+    background-color: rgb(241, 233, 230);
+    margin: auto;
+    width: 50%;
+}
+
+#work {
+    border: dotted 2px rgb(95, 91, 89);
+    padding: 2%;
+    background-color: rgb(241, 233, 230);
+    margin: auto;
+    width: 50%;
+}
+
+/* Page link styling */
+a {
+    font-size: 28px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: rgb(176, 6, 40);
+}
+
+a:hover {
+    background-color: rgb(253, 188, 188);
+}
+
+a:active {
+    color: rgb(44, 2, 2);
+}
+
+#TMUlink {
+    font-size: 28px;
+}
+
+#NSCClink {
+    font-size: 28px;
+}
+
+/* Footer styling */
+#footer {
+    color: rgb(95, 91, 89);
+    text-align: center;
+}
+
+#footText {
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal;
+}

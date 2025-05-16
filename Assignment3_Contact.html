@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="CSS/contactStyle.css">
+</head>
+
+<body>
+    <!-- Contact Form page -->
+    <h1>Contact Me</h1>
+    <hr>
+    <div>
+        <!-- Form to submit to my email s.katsabas@gmail.com -->
+        <form enctype="text/plain" method="post" target="_blank" action="mailto:s.katsabas@gmail.com">
+            <!-- Field section created for text inputs -->
+            <fieldset id="info">
+                <h3>Please enter your information:</h3>
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname"><br>
+
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname"><br>
+
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email">
+
+                <h3>Additional Comments:</h3>
+                <textarea name="consoleFeedback" rows="6" cols="50" maxlength="50"></textarea>
+            </fieldset>
+
+            <fieldset id="discover">
+                <h3>How did you hear about this website?</h3>
+
+                <input class="rad" type="radio" name="discover" value="Website">
+                <label for="website">Website</label><br>
+
+                <input class="rad" type="radio" name="discover" value="Facebook">
+                <label for="facebook">Facebook</label><br>
+
+                <input class="rad" type="radio" name="discover" value="LinkedIn">
+                <label for="linkedin">LinkedIn</label><br>
+
+                <input class="rad" type="radio" name="discover" value="E-mail">
+                <label for="email">E-mail</label><br>
+
+                <input class="rad" type="radio" name="discover" value="Friend">
+                <label for="friend">Friend</label><br>
+
+                <input class="rad" type="radio" name="discover" value="Other">
+                <label for="other">Other</label><br>
+            </fieldset>
+
+            <fieldset id="subBox">
+                <input id="reset" type="reset" value="Clear form">
+                <input id="submit" type="submit" value="Submit Info">
+            </fieldset>
+        </form>
+        <br><br>
+
+        <!-- Link back to homepage -->
+        <div id="linkHome">
+            <a href="Assignment3_Homepage.html" target="_self">Return to Homepage</a>
+        </div>
+        <br><br>
+        <hr>
+
+        <!-- Footer author information -->
+        <div id="footer">
+            <p>Author: Sara Katsabas; s.katsabas@gmail.com</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

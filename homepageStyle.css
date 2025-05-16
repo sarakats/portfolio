@@ -1,0 +1,99 @@
+/*
+    Program   : homepageStyle.css
+    Programmer: Sara Katsabas
+    Date      : November 29, 2024
+    Purpose   : To provide external style settings for the Portfolio Homepage.
+*/
+
+/* Aligning everything on the page to center */
+* {
+    text-align: center;
+    font-family: Garamond;
+}
+
+/* General item styling */
+body {
+    background-color: rgb(222, 217, 215);
+    border: solid 3px rgb(181, 177, 175);
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 26px;
+    color: rgb(95, 91, 89);
+}
+
+pre {
+    font-size: 20px;
+}
+
+p {
+    font-size: 20px;
+}
+
+/* Styling in individual <div> components */
+
+#nav {
+    border-top: dotted 2px rgb(95, 91, 89);;
+    border-bottom: dotted 2px rgb(95, 91, 89);;
+    background-color: rgb(241, 233, 230);
+}
+
+#footer {
+    color:rgb(95, 91, 89)
+}
+
+/* Styling in span text components */
+#gardentxt {
+    color: green;
+    font-weight: bold;
+}
+
+#cooktxt {
+    color: rgb(128, 26, 0);
+    font-weight: bold;
+}
+
+#bgametxt {
+    color: rgb(0, 51, 118);
+    font-weight: bold;
+}
+
+#drawtxt {
+    color: rgb(102, 0, 128);
+    font-weight: bold;
+}
+
+/* Image styling */
+img {
+    border: solid 2px white;
+    height: 400px;
+}
+
+/* Page link styling */
+a {
+    font-size: 22px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: rgb(176, 6, 40);
+}
+
+a:hover {
+    background-color: rgb(253, 188, 188);
+}
+
+a:active {
+    color: rgb(44, 2, 2);
+}

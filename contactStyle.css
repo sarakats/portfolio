@@ -1,0 +1,102 @@
+/*
+    Program   : contactStyle.css
+    Programmer: Sara Katsabas
+    Date      : November 29, 2024
+    Purpose   : To provide external style settings for the Portfolio Contact page.
+*/
+
+/* Setting overall font */
+* {
+    font-family: Garamond;
+}
+
+/* General item styling */
+body {
+    background-color: rgb(222, 217, 215);
+    border: solid 3px rgb(181, 177, 175);
+}
+
+h1 {
+    text-align: center;
+    font-size: 42px;
+}
+
+h3 {
+    font-size: 26px;
+    color: rgb(95, 91, 89);
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+input {
+    width: 250px;
+}
+
+#linkHome {
+    text-align: center;
+}
+
+/* Styling in fieldset components */
+
+#info {
+    text-align: left;
+    font-size: 20px;
+    border: solid 2px rgb(181, 177, 175);
+    margin: 2px;
+}
+
+#discover {
+    text-align: left;
+    font-size: 20px;
+    border: solid 2px rgb(181, 177, 175);
+    margin: 2px;
+}
+
+.rad {
+    width: 50px;
+}
+
+#subBox {
+    padding: 20px;
+}
+
+#reset {
+    font-size: 20px;
+    font-family: Helvetica;
+}
+
+#submit {
+    font-size: 20px;
+    font-family: Helvetica;
+}
+
+/* Style for page footer */
+#footer {
+    font-size: 20px;
+    color: rgb(95, 91, 89)
+}
+
+/* Page link styling */
+a {
+    font-size: 24px;
+    text-align: center;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: rgb(176, 6, 40);
+}
+
+a:hover {
+    background-color: rgb(253, 188, 188);
+}
+
+a:active {
+    color: rgb(44, 2, 2);
+}

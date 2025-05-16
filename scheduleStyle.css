@@ -1,0 +1,141 @@
+/*
+    Program   : scheduleStyle.css
+    Programmer: Sara Katsabas
+    Date      : November 29, 2024
+    Purpose   : To provide external style settings for the Portfolio COGS Academic
+                Semester Course schedule page.
+*/
+
+/* Aligning everything on the page to center + font */
+* {
+    text-align: center;
+    font-family: Garamond;
+}
+
+/* General item styling */
+body {
+    background-color: rgb(222, 217, 215);
+    border: solid 3px rgb(181, 177, 175);
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 26px;
+    color: rgb(95, 91, 89);
+}
+
+pre {
+    font-size: 18px;
+    font-family: Helvetica;
+}
+
+/* Table styling */
+
+th {
+    border: rgb(142, 139, 139) 2px solid;
+    font-size: larger;
+}
+
+tr {
+    font-size: 20px;
+}
+
+td {
+    border: rgb(142, 139, 139) 2px solid;
+    font-family: Helvetica;
+}
+
+.courseSched {
+    border: rgb(44, 43, 43) 3px solid;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(241, 233, 230);
+}
+
+.sched {
+    font-size: larger;
+}
+
+#days {
+    font-size: 24px;
+}
+
+#lunch {
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.courseDetail {
+    border: rgb(44, 43, 43) 3px solid;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(241, 233, 230);
+}
+
+.details {
+    height: 50px;
+}
+
+#headDetail {
+    font-size: 24px;
+}
+
+#GDAA {
+    background-color: rgb(154, 209, 234);
+}
+
+#REMS {
+    background-color: rgb(234, 181, 154);
+}
+
+#GEOM {
+    background-color: rgb(234, 154, 154);
+}
+
+#PROG {
+    background-color: rgb(234, 209, 154);
+}
+
+#GISY3 {
+    background-color: rgb(195, 234, 154);
+}
+
+#GISY4 {
+    background-color: rgb(154, 234, 201);
+}
+
+/* Style for page footer */
+#footer {
+    font-size: 20px;
+    color: rgb(95, 91, 89)
+}
+
+/* Page link styling */
+a {
+    font-size: 28px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: rgb(176, 6, 40);
+}
+
+a:hover {
+    background-color: rgb(253, 188, 188);
+}
+
+a:active {
+    color: rgb(44, 2, 2);
+}

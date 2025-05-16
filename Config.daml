@@ -1,0 +1,134 @@
+﻿<ArcGIS defaultAssembly="MiningSites.dll" defaultNamespace="MiningSites" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+  <AddInInfo id="{e67f1d34-8dfb-4089-8e36-2b3f9763624a}" version="1.0" desktopVersion="3.3.52636" product="ArcGISPro">
+    <Name>MiningSites</Name>
+    <Description>MiningSites description</Description>
+    <Image>Images\AddinDesktop32.png</Image>
+    <Author>skats</Author>
+    <Company>Acme</Company>
+    <Date>4/4/2025 9:06:05 PM</Date>
+    <Subject>Framework</Subject>
+  </AddInInfo>
+  <modules>
+    <insertModule id="MiningSites_Module" 
+				  className="Module1" 
+		          autoLoad="false" 
+				  caption="Module1">
+      <tabs>
+        <!-- New Tab to hold all add-ins -->
+        <tab id="MiningSites_Tab" 
+			 caption="Mining Project">
+          <group refID="MiningSites_Group" />
+        </tab>
+      </tabs>
+      <groups>
+        <!-- Group to hold all add-ins within the tab ribbon -->
+        <group id="MiningSites_Group" 
+			   caption="Site Analysis" 
+			   appearsOnAddInTab="false">
+          <button refID="MiningSites_ClearSelect" 
+				  size="large" />
+          <comboBox refID="MiningSites_ComboBox" />
+          <button refID="MiningSites_ZoomToSelected" 
+				  size="large" />
+          <button refID="MiningSites_BufferSelectedFeatures" 
+				  size="large" />
+          <button refID="MiningSites_OpenIntersectTool" 
+				  size="large" />
+          <button refID="MiningSites_ZoomToFirstPoint" 
+				  size="large" />
+          <button refID="MiningSites_ZoomToPrevious" 
+				  size="large" />
+          <button refID="MiningSites_ZoomToNext" 
+				  size="large" />
+          <tool refID="MiningSites_IdentifyTool" 
+				size="large" />
+          <button refID="MiningSites_RunModel" 
+				  size="large" />
+        </group>
+      </groups>
+      <controls>
+        <!-- Selection ComboBox controls -->
+        <comboBox id="MiningSites_ComboBox" 
+				  caption="Select" 
+			className="MiningSitesComboBox" 
+				  itemWidth="140" 
+				  extendedCaption="" 
+				  isEditable="false" 
+				  isReadOnly="true" 
+				  resizable="true">
+          <tooltip heading="Select Features">
+			  Select all features within the chosen feature layer. Selection must be manually cleared.<disabledText />
+		  </tooltip>
+        </comboBox>
+        <!-- Clear Selection Button controls -->
+        <button id="MiningSites_ClearSelect" 
+				caption="Clear Selection" 
+				className="ClearSelect" 
+				loadOnClick="true" 
+				smallImage="SelectionClearSelected16" 
+				largeImage="SelectionClearSelected32">
+          <tooltip heading="Clear Selection">
+				  Clear all currently selected features.<disabledText />
+		  </tooltip>
+        </button>
+        <!-- Zoom Button controls -->
+        <button id="MiningSites_ZoomToSelected" 
+				caption="Zoom To Selected" 
+				className="ZoomToSelected" 
+				loadOnClick="true" 
+				smallImage="SelectionZoomToSelected16" 
+			largeImage="SelectionZoomToSelected32">
+          <tooltip heading="Zoom to Selected">
+			  Zoom to selected features.<disabledText />
+		</tooltip>
+        </button>
+        <!-- Buffer Features Button controls -->
+        <button id="MiningSites_BufferSelectedFeatures" 
+				caption="Buffer Selected"
+				className="BufferSelectedFeatures" 
+				loadOnClick="true" 
+				smallImage="GenericButtonPurple16" 
+				largeImage="GenericButtonPurple32">
+          <tooltip heading="Create Buffer">
+			  Perform a Buffer process on selected points using values input from a specific field (BUFF_DIST).<disabledText />
+		  </tooltip>
+        </button>
+        <!-- Open Intersect Tool Button controls -->
+        <button id="MiningSites_OpenIntersectTool" 
+				caption="Intersect Tool" 
+				className="OpenIntersectTool" 
+				loadOnClick="true" 
+				smallImage="GeoprocessingTool16" 
+				largeImage="GeoprocessingTool32">
+          <tooltip heading="Open Intersect">
+			  Open the Intersect tool in the Geoprocessing pane.<disabledText />
+		  </tooltip>
+        </button>
+        <!-- Identify Tool controls -->
+        <tool id="MiningSites_IdentifyTool" 
+			  caption="Identify Features" 
+			  className="IdentifyTool" 
+			  loadOnClick="true" 
+			  smallImage="ZoomGeneric16" 
+			  largeImage="ZoomGeneric32" 
+			  condition="esri_mapping_mapPane">
+          <tooltip heading="Identify Features">
+				  Identify features within selection.<disabledText />
+		  </tooltip>
+        </tool>
+		<!-- Run Model Button controls -->
+        <button id="MiningSites_RunModel" 
+				caption="Run Model (CrTbl)" 
+				className="RunModel" 
+				loadOnClick="true" 
+				smallImage="GeoprocessingToolbox16" 
+				largeImage="GeoprocessingToolbox32">
+          <tooltip heading="Run Model">
+			  After opening the Geoprocessing pane, open Toolboxes tab, then click to run model.
+			  <disabledText />
+		  </tooltip>
+        </button>
+      </controls>
+    </insertModule>
+  </modules>
+</ArcGIS>
