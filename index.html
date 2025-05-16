@@ -1,0 +1,45 @@
+<!-- Shortcut Icon available under CC license https://creativecommons.org/licenses/by/4.0/
+     Image Source: https://icon-icons.com/icon/swallow-bird/250697 
+Author : Sara Katsabas
+Date   : April 14, 2025
+Purpose: To create and display an HTML page for a web scene showing data related to surveys done
+         in the mudflats of Tofino, BC on shorebirds -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/swallow_bird_icon_250697.ico">
+    <title>Shorebird Survey Areas</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://js.arcgis.com/4.32/"></script>
+    <script src="scripts/main.js"></script>
+</head>
+
+<body>
+    <!-- Header (title, logo, author) -->
+    <div class="header" id="header">
+        <img id="logo" src="images/COGS_Small2Colour-trsnp.png">
+        <h1>Tofino Mudflats Shorebird Surveys (2011)</h1>
+        <p>Created by Sara Katsabas</p>
+    </div>
+
+    <!-- Map container -->
+    <div id="sceneDiv"></div>
+
+    <!-- Attribution and disclaimer -->
+    <div class="footer">
+        <p>Data sourced from <a
+                href="https://data-donnees.az.ec.gc.ca/data/species/protectrestore/tofino-mudflats-shorebird-surveys-british-columbia/">"Tofino
+                Mudflats Shorebird Surveys, British Columbia"</a></p>
+        <p>Information in this project is unedited, unverified,
+            and intended for education purposes only.</p>
+    </div>
+
+</body>
+
+</html>

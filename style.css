@@ -1,0 +1,97 @@
+/*
+Author : Sara Katsabas
+Date   : March 17, 2025
+Purpose: To provide external CSS for the web map app and webpage.
+*/
+
+/* Import modules for OpenLayers css */
+@import "node_modules/ol/ol.css";
+
+/* General page styles */
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Verdana;
+  color: #107ec2;
+  background-color: #c7dfe4;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: #065382;
+}
+
+/* Styling for <div> features by ID */
+#aquaMap {
+  position: absolute;
+  top: 120px;
+  bottom: 25px;
+  right: 5px;
+  left: 5px;
+  outline: 2px solid #013758;
+}
+
+#mouse-position {
+  float: right;
+  padding: 5px;
+}
+
+#copy {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  font-size: smaller;
+  color: #065382;
+}
+
+#copy p {
+  padding-right: 0.5em;
+}
+
+#chooseBase {
+  margin-right: 50px;
+}
+
+#logo {
+  width: 7%;
+}
+
+#title {
+  width: 650px;
+  height: 75px;
+  color: #013758;
+}
+
+#title h2 {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#title h4 {
+  margin-top: 5px;
+}
+
+/* Styling for <div> features by class */
+.controls {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+}
+

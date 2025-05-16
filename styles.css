@@ -1,0 +1,72 @@
+/*
+Author : Sara Katsabas
+Date   : April 14, 2025
+Purpose: To provide page styling for the web page
+*/
+/* General page style */
+html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(231, 240, 220);
+    font-family: Calibri;
+}
+
+h1 {
+    color: rgb(50, 88, 3);
+    font-family: Georgia;
+}
+
+p {
+    color: rgb(124, 167, 72);
+}
+
+/* Link style */
+a:link {
+    color: rgb(86, 141, 18);
+}
+
+a:visited {
+    color: rgb(175, 38, 28);
+}
+
+a:hover {
+    color: rgb(8, 172, 144);
+}
+
+a:active {
+    color: rgb(86, 141, 18);
+}
+
+/* Style header, logo size, and map container */
+#header {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#logo {
+    height: 25px;
+}
+
+#sceneDiv {
+    height: 90%;
+    width: 100%;
+    border-top: solid 2px rgb(74, 55, 99);
+    border-bottom: solid 2px rgb(74, 55, 99);
+}
+
+/* Style for classes */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
