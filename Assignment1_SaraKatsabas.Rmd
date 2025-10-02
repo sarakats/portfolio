@@ -1,0 +1,151 @@
+# [GDAA1001 Assignment 1 - Build an ETL Pipeline]{.underline}
+
+Author : Sara Katsabas\
+Date : November 22, 2024
+
+## Extraction
+
+This project looks at an assessment that was done on chemical contaminants that were found in the nearshore waters of Lake Superior in 2016 and 2019, and will transform the data according to the principles of Tidy Data in order to prepare it for a future analysis. Ideally, an analysis on this data will show if there are any patterns in areas of higher "stress" in the water of Lake Superior, and if there are any areas along the shore that are showing significantly high stressors so that further investigation can be carried out to solve the issue.
+
+### Data Location:
+
+The data was found on the Government of Canada's official website, and comes from the Environment and Climate Change Canada (ECCC) department's open source catalogue. The ECCC has published a wide range of their environmental and scientific data for the public to view and use, and this project uses a dataset that was published in 2023 alongside a number of others that were assessing stress factors on the waters of the Great Lakes.\
+The data can be found here at [this link](https://data-donnees.az.ec.gc.ca/data/sites/scientificknowledge/great-lakes-nearshore-waters-assessment/en?lang=en). The specific file used for this project was GreatLakesNearshore_WaterChemistryFederal.csv. The definitions I referenced for column names is found at the same link with the file name GreatLakesNearshoreDataDescription.csv.
+
+### Challenges and Solutions:
+
+Due to the open source content, the data was easy to download as a .csv file. It was also relatively well maintained in terms of there being no chunks of missing data, only a select few cases of null valued cells, and consistent naming practices among columns and cell values. The dataset was also published alongside another spreadsheet containing definitions and explanations for all columns.
+
+In choosing the data, there was a small challenge in narrowing down what specific stress factor in the nearshore assessment that I wanted to use for this project. There were a number of interesting factors that would also be good indicators for areas of higher stress in the Great Lakes, but ultimately I settled on water contaminants for the purposes of how it would work in the process of creating an ETL pipeline for the assignment.
+
+For the purposes of this assignment, I altered the dataset slightly to give it some inconsistencies and a few missing values so that I had a few more things to fix during the transformation process.
+
+```{r}
+# Load library to read .csv
+library(readr)
+
+# Load dataset
+lakechem <- read_csv("SuperiorWaterChem20.csv")
+```
+
+The extraction part of the process was fairly simple. The dataset was already available as a .csv, so I saved it, altered it, and saved the altered data under another name so that I would be able to return to the original unaltered data if I needed to.
+
+## Transformation
+
+To start, the dplyr package is loaded.
+
+```{r}
+# Load library for data manipulation
+library(dplyr)
+```
+
+### Data Type Casting:
+
+Although much of the data was already loaded as the correct type, the column 'CollectionDate' had to be cast into a Date type using the function `as.Date()` in order for R to properly read the dates and be able to sort them appropriately.
+
+```{r}
+# Convert the date column to Date format (DD/MM/YYYY)
+lakechem$CollectionDate <- as.Date(lakechem$CollectionDate, format = "%d/%m/%Y")
+
+# Sort the data by the date column
+lakechem_sorted <- lakechem %>% arrange(CollectionDate)
+```
+
+### Row/Column Selection:
+
+To streamline the dataset, a few columns should be removed;
+
+-   *NearshoreAssessment*
+-   *AssessmentYear*
+-   *AssessmentCategory*
+-   *PermanentStationNumber*
+-   *Depth_to*
+-   *Detection*
+-   *ResultAdjusted*
+-   *Comment*
+-   *Latitude*
+-   *Longitude*
+-   *DataSource*
+
+Columns were primarily removed for the following reasons: their values were all the same (e.g. *NearshoreAssessment*'s values are all Lake Superior), because the information didn't contribute anything to this analysis (e.g. *PermanentStationNumber*), were redundant and less descriptive than another column (e.g. *Detection* was removed because the *Flag* column indicates if a value outside of limits was detected), or due to the nature of this assignment necessitating the removal of spatial coordinate data. This was done using the `select()` function to choose column, and `-` in front of the name to tell R to remove them.
+
+```{r}
+# Remove specified columns
+lakechem_cleaned <- lakechem_sorted %>%
+  select(-NearshoreAssessment, -AssessmentYear, -AssessmentCategory, 
+         -PermanentStationNumber, -Depth_to, -Detection, 
+         -ResultAdjusted, -Comment, -Latitude, -Longitude, -DataSource)
+```
+
+The following columns were kept;
+
+-   *RegionalUnitID*
+-   *CollectionDate*
+-   *Depth_from*
+-   *Parameter*
+-   *Value*
+-   *Unit*
+-   *Flag*
+
+Columns fall under the guidelines for what constitutes a true variable, or were otherwise important to keep as descriptive values for the dataset: *RegionalUnitID* is an identifying variable that designates the region of the nearshore that samples were collected from, *CollectionDate* would be key for a predictive analysis that is looking to find future patterns in the concentration of contaminants, and all other columns directly describe either the contaminant samples themselves, or are a binary indicator of a value over federal limits being detected.
+
+### Missing Value Handling:
+
+The data was altered in order to have missing values, and these values were deleted at random from the columns *Depth_from* and *Value*. Although null cells were artificially and randomly created, and a listwise deletion wouldn't terribly skew the data, I chose to use imputation methods to fill in the null cells instead to limit the risk of potentially deleting any records of a specific contaminant.
+
+The column *Depth_from* has numeric values that mostly fall in the range of 1-115, but there are small number of outlying values between 995-999, so the median imputation method would be the best fit. The column *Value* on the other hand, has a much smaller range in values, with most falling between 0-10. For this imputation, the mean imputation method should work just fine. The `mutate()` function was used to modify columns.
+
+```{r}
+# Perform median imputation on column Depth_from, and mean imputation on column Value
+lakechem_imputed <- lakechem_cleaned %>%
+  mutate(
+    Value = ifelse(is.na(Value), mean(Value, na.rm = TRUE), Value),
+    Depth_from = ifelse(is.na(Depth_from), median(Depth_from, na.rm = TRUE), Depth_from),
+    Value = round(Value, 4)
+  )
+```
+
+To keep the data more consistent with its original values, I altered the precision of the *Value* column to be 4 with the `round()` function.
+
+### Error Corrections:
+
+Though the data was relatively uniform and consistent when I downloaded it, I chose to introduce some inconsistent capitalization to a few columns for the purposes of this project. As the original dataset had these values in all capital letters, I chose to preserve that and converted any lowercase letters to uppercase using the `toupper()` function.
+
+```{r}
+# Convert all letters in 'Parameter' and 'Unit' columns to uppercase
+lakechem_imputed <- lakechem_imputed %>%
+  mutate(
+    Parameter = toupper(Parameter),
+    Unit = toupper(Unit)
+  )
+```
+
+After fixing the capitalization issues, I also chose to edit the column titles to be a little clearer at a glance, as well as more consistent with each other in terms of style with the `rename()` function.
+
+```{r}
+# Rename columns
+lakechem_imputed <- lakechem_imputed %>%
+  rename(
+    `Regional ID` = RegionalUnitID,
+    `Date Collected` = CollectionDate,
+    `Collection Depth` = Depth_from,
+    Contaminant = Parameter,
+    `Limit Detected` = Flag,
+    `Recorded Value` = Value
+  )
+
+```
+
+And finally, I altered the values of the Recorded Value column to be a little clearer as well. Instead of indicators being marked by \> and NA values showing that contaminant values were under federal detection limits, for clarity I changed it to a Yes or No value instead. The function `case_when()` is used to specify multiple conditions, in this case to replace NA with No, and \< with Yes.
+
+```{r}
+# Modify values in the 'Limit Detected' column
+lakechem_imputed <- lakechem_imputed %>%
+  mutate(
+    `Limit Detected` = case_when(
+      is.na(`Limit Detected`) ~ "No",
+      `Limit Detected` == "<" ~ "Yes",
+      TRUE ~ as.character(`Limit Detected`)
+    )
+  )
+```
